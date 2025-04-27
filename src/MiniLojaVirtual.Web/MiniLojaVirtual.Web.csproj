@@ -18,4 +18,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MiniLojaVirtual.Domain\MiniLojaVirtual.Domain.csproj" />
+    <ProjectReference Include="..\MiniLojaVirtual.Infrastructure\MiniLojaVirtual.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

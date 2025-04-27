@@ -1,8 +1,11 @@
+using MiniLojaVirtual.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
