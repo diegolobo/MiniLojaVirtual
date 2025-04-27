@@ -4,10 +4,10 @@ public static class DomainConstants
 {
 	#region Infrastructure
 
-	public const string DefaultConnectionStringName = "UNIQUEIDENTIFIER";
+	public const string DefaultConnectionStringName = "DefaultConnection";
 
 	public const string CodeColumnTypeName = "UNIQUEIDENTIFIER";
-	public const string DefaultDateTimeColumnTypeName = "DATETIME(7)";
+	public const string DefaultDateTimeColumnTypeName = "DATETIME";
 	public const string DefaultNVarcharColumnTypeName = "NVARCHAR(50)";
 	public const string DefaultVarcharColumnTypeName = "VARCHAR(50)";
 	public const string DefaultBooleanColumnTypeName = "BIT";
