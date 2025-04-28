@@ -126,7 +126,8 @@ public class RegisterModel : PageModel
 			{
 				Name = string.Empty,
 				CreatedAt = DateTime.UtcNow,
-				Code = string.Empty.NewUuidV7()
+				Code = string.Empty.NewUuidV7(),
+				EmailConfirmed = true
 			};
 		}
 		catch
