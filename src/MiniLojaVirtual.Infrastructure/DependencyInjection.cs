@@ -17,6 +17,7 @@ public static class DependencyInjection
 
 		services.AddDefaultIdentity<UserEntity>(options =>
 			{
+				options.SignIn.RequireConfirmedAccount = true;
 				options.Password.RequiredLength = DomainConstants.PasswordRequiredLength;
 				options.Lockout.MaxFailedAccessAttempts = DomainConstants.LockoutMaxFailedAccessAttempts;
 			})

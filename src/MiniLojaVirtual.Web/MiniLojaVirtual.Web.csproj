@@ -13,14 +13,17 @@
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.15" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.15" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.15" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MiniLojaVirtual.Domain\MiniLojaVirtual.Domain.csproj" />
     <ProjectReference Include="..\MiniLojaVirtual.Infrastructure\MiniLojaVirtual.Infrastructure.csproj" />
+    <ProjectReference Include="..\MiniLojaVirtual.Service.EmailSender\MiniLojaVirtual.Service.EmailSender.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
 using MiniLojaVirtual.Infrastructure;
+using MiniLojaVirtual.Service.EmailSender;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,7 @@ builder.Services.AddAuthentication();
 
 if (builder.Environment.IsDevelopment()) builder.Configuration.AddUserSecrets<Program>();
 
+builder.Services.AddEmailService(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
