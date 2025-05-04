@@ -1,7 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-
-#nullable disable
+﻿#nullable disable
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
@@ -87,7 +84,6 @@ public class LoginModel : PageModel
 
 		returnUrl ??= Url.Content("~/");
 
-		// Clear the existing external cookie to ensure a clean login process
 		await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
 		ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
@@ -103,30 +99,22 @@ public class LoginModel : PageModel
 
 		if (ModelState.IsValid)
 		{
-			// This doesn't count login failures towards account lockout
-			// To enable password failures to trigger account lockout, set lockoutOnFailure: true
-			var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, false);
+			var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, true);
 			if (result.Succeeded)
 			{
-				_logger.LogInformation("User logged in.");
+				_logger.LogInformation("Usuário logado.");
 				return LocalRedirect(returnUrl);
 			}
 
-			if (result.RequiresTwoFactor)
-				return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
 			if (result.IsLockedOut)
 			{
-				_logger.LogWarning("User account locked out.");
+				_logger.LogWarning("Conta de usuário bloqueada.");
 				return RedirectToPage("./Lockout");
 			}
-			else
-			{
-				ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-				return Page();
-			}
+
+			ModelState.AddModelError(string.Empty, "Tentativa de login inválida.");
 		}
 
-		// If we got this far, something failed, redisplay form
 		return Page();
 	}
 }
