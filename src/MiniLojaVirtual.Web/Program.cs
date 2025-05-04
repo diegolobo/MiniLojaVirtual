@@ -3,11 +3,14 @@ using MiniLojaVirtual.Service.EmailSender;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddControllersWithViews();
 builder.Services.AddAuthentication();
 
-if (builder.Environment.IsDevelopment()) builder.Configuration.AddUserSecrets<Program>();
+if (builder.Environment.IsDevelopment())
+{
+	builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+	builder.Configuration.AddUserSecrets<Program>();
+}
 
 builder.Services.AddEmailService(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
