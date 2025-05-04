@@ -20,3 +20,14 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.navbar-nav .nav-link.active {
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 8px 15px;
+}
+
+.navbar-nav .nav-link {
+    padding: 8px 15px;
+    margin: 0 2px;
+}

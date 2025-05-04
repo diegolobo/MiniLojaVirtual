@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 using MiniLojaVirtual.Infrastructure.Entities;
+using MiniLojaVirtual.Infrastructure.Entities.Products;
 
 namespace MiniLojaVirtual.Infrastructure.Contexts;
 
@@ -18,4 +19,11 @@ public class ApplicationDbContext : IdentityDbContext<UserEntity, IdentityRole<l
 		base.OnModelCreating(builder);
 		builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
 	}
+
+	#region DbSet's
+
+	public DbSet<ProductEntity> Products { get; set; }
+	public DbSet<CategoryEntity> Categories { get; set; }
+
+	#endregion
 }
