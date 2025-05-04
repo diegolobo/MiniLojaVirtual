@@ -1,8 +1,8 @@
-﻿namespace MiniLojaVirtual.Domain.Models.User.Constants;
+﻿namespace MiniLojaVirtual.Domain.Models.Users.Constants;
 
 public static class UserConstants
 {
-	public const string UserTableName = "User";
+	public const string UserTableName = "Users";
 
 	public const short UserNameMaxLength = 75;
 	public const short EmailMaxLength = 30;

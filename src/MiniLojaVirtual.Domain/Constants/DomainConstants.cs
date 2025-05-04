@@ -12,6 +12,8 @@ public static class DomainConstants
 	public const string DefaultVarcharColumnTypeName = "VARCHAR(50)";
 	public const string DefaultBooleanColumnTypeName = "BIT";
 
+	public const string UuidColumnDefaultValue = "NEWSEQUENTIALID()";
+
 	public const short PasswordRequiredLength = 8;
 	public const short LockoutMaxFailedAccessAttempts = 3;
 

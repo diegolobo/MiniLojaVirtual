@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 using MiniLojaVirtual.Domain.Constants;
-using MiniLojaVirtual.Domain.Models.User.Constants;
+using MiniLojaVirtual.Domain.Models.Users.Constants;
 using MiniLojaVirtual.Infrastructure.Entities;
 
 namespace MiniLojaVirtual.Infrastructure.EntitiesConfigurations;
@@ -59,5 +59,15 @@ public class ApplicationUserConfigurations : IEntityTypeConfiguration<UserEntity
 		builder.Property(u => u.IsDeleted)
 			.HasColumnType(DomainConstants.DefaultBooleanColumnTypeName)
 			.IsRequired();
+
+		builder.HasMany(x => x.Products)
+			.WithOne(x => x.User)
+			.HasForeignKey(x => x.UserId)
+			.OnDelete(DeleteBehavior.Restrict);
+
+		builder.HasMany(x => x.Categories)
+			.WithOne(x => x.User)
+			.HasForeignKey(x => x.UserId)
+			.OnDelete(DeleteBehavior.Restrict);
 	}
 }

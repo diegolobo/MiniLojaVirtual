@@ -1,6 +1,5 @@
-﻿using MiniLojaVirtual.Domain.Models.User;
+﻿using MiniLojaVirtual.Domain.Models.Users;
 using MiniLojaVirtual.Infrastructure.Contexts;
-
 using NetArchTest.Rules;
 
 namespace MiniLojaVirtual.Tests.Architecture;
