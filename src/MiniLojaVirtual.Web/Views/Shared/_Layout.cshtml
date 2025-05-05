@@ -24,6 +24,9 @@
 						<li class="nav-item">
 							<a class="nav-link @Html.IsActive("Products", "Index")" asp-controller="Products" asp-action="Index">Produtos</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link @Html.IsActive("Categories", "Index")" asp-controller="Categories" asp-action="Index">Categorias</a>
+						</li>
 					</ul>
 					<div class="navbar-nav ms-auto">
 						<partial name="_LoginPartial" />
@@ -45,7 +48,9 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
