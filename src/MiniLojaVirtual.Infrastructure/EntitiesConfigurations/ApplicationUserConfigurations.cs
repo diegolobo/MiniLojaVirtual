@@ -69,5 +69,7 @@ public class ApplicationUserConfigurations : IEntityTypeConfiguration<UserEntity
 			.WithOne(x => x.User)
 			.HasForeignKey(x => x.UserId)
 			.OnDelete(DeleteBehavior.Restrict);
+
+		_ = builder.HasQueryFilter(x => !x.IsDeleted);
 	}
 }
