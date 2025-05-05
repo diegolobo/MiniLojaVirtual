@@ -1,4 +1,6 @@
-﻿@using MiniLojaVirtual.Infrastructure.Entities
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Manage.Internal
+@using MiniLojaVirtual.Infrastructure.Entities
 @inject SignInManager<UserEntity> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
