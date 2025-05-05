@@ -26,4 +26,8 @@
     <ProjectReference Include="..\MiniLojaVirtual.Service.EmailSender\MiniLojaVirtual.Service.EmailSender.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\Categories\" />
+  </ItemGroup>
+
 </Project>

@@ -1,60 +1,69 @@
-﻿@model IEnumerable<MiniLojaVirtual.Infrastructure.Entities.Products.ProductEntity>
+﻿@model IEnumerable<MiniLojaVirtual.Web.ViewModels.Products.ProductItemViewModel>
 
 @{
-    ViewData["Title"] = "Produtos";
+	ViewData["Title"] = "Produtos";
 }
 
 <h1>@ViewData["Title"]</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-primary"><spam class="fa fa-plus"></spam> Novo</a>
+	<a asp-action="Create" class="btn btn-primary"><spam class="fa fa-plus"></spam> Novo</a>
 </p>
 
-<table class="table table-hover">
-    <thead>
-    <tr>
-	    <th>
-		    Cód.
-	    </th>
-	    <th>
-		    Categoria
-	    </th>
-	    <th>
-		    Vendedor
-	    </th>
-	    <th>
-		    Produto
-	    </th>
-	    <th>
-		    Preço
-	    </th>
-	    <th></th>
-    </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @item.Id)
-            </td>
-            <td>
-                @item.Category?.Name
-            </td>
-            <td>
-                @item.User?.Name
-            </td>
-            <td>
-                @item.Name
-            </td>
-            <td>
-                @item.Price
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.Id"><spam class="fa fa-search" /></a>
-	            <a asp-action="Edit" asp-route-id="@item.Id"><spam class="fa fa-pencil-alt" /></a>
-	            <a asp-action="Delete" asp-route-id="@item.Id"><spam class="fa fa-trash" /></a>
-            </td>
-        </tr>
+@if (!string.IsNullOrWhiteSpace(TempData["Success"]?.ToString()))
+{
+	<div class="alert alert-dismissible alert-success">
+		<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+		<strong>Tudo certo!</strong> @TempData["Success"]?.ToString()
+	</div>
 }
-    </tbody>
+
+@if (!string.IsNullOrWhiteSpace(TempData["Error"]?.ToString()))
+{
+	<div class="alert alert-dismissible alert-danger">
+		<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+		<strong>Ops!</strong> @TempData["Error"]?.ToString()
+	</div>
+}
+
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>
+				Produto
+			</th>
+			<th>
+				Categoria
+			</th>
+			<th>
+				Vendedor
+			</th>
+			<th>
+				Preço
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@item.Name
+				</td>
+				<td>
+					@item.CategoryName
+				</td>
+					@item.SellerName
+				<td>
+					@item.Price
+				</td>
+				<td>
+					<a asp-action="Details" asp-route-code="@item.Code" class="p-2"><spam class="fa fa-search" /></a>
+					<a asp-action="Edit" asp-route-code="@item.Code" class="p-2"><spam class="fa fa-pencil-alt" /></a>
+					<a asp-action="Delete" asp-route-code="@item.Code" class="p-2"><spam class="fa fa-trash" /></a>
+				</td>
+			</tr>
+		}
+	</tbody>
 </table>

@@ -1,84 +1,66 @@
-﻿@model MiniLojaVirtual.Infrastructure.Entities.Products.ProductEntity
+﻿@model MiniLojaVirtual.Web.ViewModels.Products.ProductItemViewModel
+
 
 @{
-    ViewData["Title"] = "Details";
+	ViewData["Title"] = $"Produto {Model.Name}";
 }
 
-<h1>Details</h1>
-
 <div>
-    <h4>ProductEntity</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.User)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.User.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Stock)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Stock)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Code)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Code)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedAt)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UpdatedAt)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsDeleted)
-        </dd>
-    </dl>
+	<h4>@ViewData["Title"]</h4>
+	<hr />
+	<dl class="row">
+		<dt class="col-sm-2">
+			Vendedor
+		</dt>
+		<dd class="col-sm-10">
+			@Model.SellerName
+		</dd>
+		<dt class="col-sm-2">
+			Categoria
+		</dt>
+		<dd class="col-sm-10">
+			@Model.CategoryName
+		</dd>
+		<dt class="col-sm-2">
+			Produto
+		</dt>
+		<dd class="col-sm-10">
+			@Model.Name
+		</dd>
+		<dt class="col-sm-2">
+			Descrição
+		</dt>
+		<dd class="col-sm-10">
+			@Model.Description
+		</dd>
+		<dt class="col-sm-2">
+			Preço
+		</dt>
+		<dd class="col-sm-10">
+			@Model.Price
+		</dd>
+		<dt class="col-sm-2">
+			Estoque
+		</dt>
+		<dd class="col-sm-10">
+			@Model.Stock
+		</dd>
+		<dt class="col-sm-2">
+			Foto
+		</dt>
+		<dd class="col-sm-10">
+			@if (!string.IsNullOrEmpty(Model.ImageUrl))
+			{
+				<img src="@Model.ImageUrl" alt="@Model.Name" style="max-width: 50px; max-height: 50px;"/>
+			}
+			else
+			{
+				<span class="text-muted">Sem imagem</span>
+			}
+		</dd>
+	</dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+	<a asp-action="Edit" asp-route-code="@Model.Code" class="btn btn-primary">Alterar</a>
+	<a asp-action="Index" class="btn btn-outline-info">Voltar</a>
 </div>
