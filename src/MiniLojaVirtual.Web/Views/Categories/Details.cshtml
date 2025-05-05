@@ -1,0 +1,65 @@
+﻿@model MiniLojaVirtual.Infrastructure.Entities.Products.CategoryEntity
+
+@{
+    ViewData["Title"] = $"Categoria {Model.Name}";
+}
+
+<h1>Detalhes</h1>
+
+<div>
+    <h4>@ViewData["Title"]</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Categoria
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Name
+        </dd>
+        <dt class="col-sm-2">
+            Descrição
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Description
+        </dd>
+    </dl>
+</div>
+
+@if (Model.Products != null && Model.Products.Any())
+{
+    <h4>Produtos nesta Categoria</h4>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Estoque</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.Products)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Price.ToString("C")</td>
+                    <td>@product.Stock</td>
+                    <td>
+                        <a asp-controller="Products" asp-action="Details" asp-route-code="@product.Code"><spam class="fa fa-search" /></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nenhum produto cadastrado nesta categoria.</p>
+}
+
+<div>
+	<div>
+		<a asp-action="Edit" asp-route-code="@Model.Code" class="btn btn-primary">Alterar</a>
+		<a asp-action="Index" class="btn btn-outline-info">Voltar</a>
+	</div>
+</div>

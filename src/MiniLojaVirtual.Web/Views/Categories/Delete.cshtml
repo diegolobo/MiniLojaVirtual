@@ -1,0 +1,33 @@
+﻿@model MiniLojaVirtual.Infrastructure.Entities.Products.CategoryEntity
+
+@{
+	ViewData["Title"] = $"Excluir {Model.Name}?";
+}
+
+<h1>Excluir Categoria</h1>
+
+<h3>Tem certeza de que deseja excluir a categoria @Model.Name?</h3>
+<div>
+	<h4>Categoria</h4>
+	<hr />
+	<dl class="row">
+		<dt class="col-sm-2">
+			categoria
+		</dt>
+		<dd class="col-sm-10">
+			@Model.Name
+		</dd>
+		<dt class="col-sm-2">
+			Descrição
+		</dt>
+		<dd class="col-sm-10">
+			@Model.Description
+		</dd>
+	</dl>
+    
+	<form asp-action="Delete">
+		<input type="hidden" asp-for="Code" />
+		<input type="submit" value="Excluir" class="btn btn-danger" />
+		<a asp-action="Index" class="btn btn-outline-info">Voltar</a>
+	</form>
+</div>

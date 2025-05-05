@@ -1,0 +1,71 @@
+﻿@model string?
+
+<div class="image-selector-container mb-3">
+    <div class="form-group">
+        <label for="ImageUrl" class="control-label">Imagem do Produto</label>
+        <div class="input-group">
+            <input id="ImageUrl" name="ImageUrl" type="text" class="form-control" value="@Model" placeholder="URL da imagem ou selecione um arquivo local" />
+            <label class="input-group-text btn btn-secondary" for="imageUpload">
+                <i class="fa fa-upload"></i> Escolher arquivo
+            </label>
+        </div>
+        <input type="file" id="imageUpload" class="d-none" accept="image/*" />
+        <small class="form-text text-muted">Cole uma URL ou selecione um arquivo de imagem local.</small>
+    </div>
+
+    <div class="image-preview mt-2 @(string.IsNullOrEmpty(Model) ? "d-none" : "")">
+        <div class="card" style="max-width: 200px;">
+            <img id="previewImage" src="@Model" class="card-img-top" alt="Preview" />
+            <div class="card-body p-2">
+                <button type="button" class="btn btn-sm btn-danger w-100" id="removeImage">
+                    <i class="fa fa-times"></i> Remover
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const imageUrlInput = document.getElementById('ImageUrl');
+        const imageUpload = document.getElementById('imageUpload');
+        const previewImage = document.getElementById('previewImage');
+        const imagePreview = document.querySelector('.image-preview');
+        const removeImageBtn = document.getElementById('removeImage');
+
+        function updatePreview(url) {
+            if (url && url.trim() !== '') {
+                previewImage.src = url;
+                imagePreview.classList.remove('d-none');
+            } else {
+                imagePreview.classList.add('d-none');
+                previewImage.src = '';
+            }
+        }
+
+        imageUrlInput.addEventListener('input', function() {
+            updatePreview(this.value);
+        });
+
+        imageUpload.addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    imageUrlInput.value = e.target.result;
+                    updatePreview(e.target.result);
+                };
+
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
+        removeImageBtn.addEventListener('click', function() {
+            imageUrlInput.value = '';
+            imageUpload.value = '';
+            updatePreview('');
+        });
+
+        updatePreview(imageUrlInput.value);
+    });
+</script>

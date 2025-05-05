@@ -1,0 +1,39 @@
+﻿@model MiniLojaVirtual.Infrastructure.Entities.Products.CategoryEntity
+
+@{
+	ViewData["Title"] = "Editar Categoria";
+}
+
+<h1>Editar Categoria</h1>
+
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Edit">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="Code" />
+			<input type="hidden" asp-for="CreatedAt" />
+            
+			<div class="form-group">
+				<label asp-for="Name" class="control-label">Nome</label>
+				<input asp-for="Name" class="form-control" />
+				<span asp-validation-for="Name" class="text-danger"></span>
+			</div>
+            
+			<div class="form-group">
+				<label asp-for="Description" class="control-label">Descrição</label>
+				<textarea asp-for="Description" class="form-control" rows="3"></textarea>
+				<span asp-validation-for="Description" class="text-danger"></span>
+			</div>
+            
+			<div class="form-group mt-3">
+				<input type="submit" value="Salvar" class="btn btn-primary" />
+				<a asp-action="Index" class="btn btn-outline-info">Voltar</a>
+			</div>
+		</form>
+	</div>
+</div>
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
