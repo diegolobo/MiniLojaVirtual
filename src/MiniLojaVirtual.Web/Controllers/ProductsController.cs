@@ -2,11 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-
 using MiniLojaVirtual.Domain.Extensions;
 using MiniLojaVirtual.Infrastructure.Contexts;
 using MiniLojaVirtual.Infrastructure.Entities.Products;
-using MiniLojaVirtual.Web.Controllers.Abstracts;
+using MiniLojaVirtual.Web.Controllers.Base;
 using MiniLojaVirtual.Web.ViewModels.Products;
 
 namespace MiniLojaVirtual.Web.Controllers;
@@ -92,8 +91,8 @@ public class ProductsController : MainController
 				viewmodel.ImageUrl = await SaveImage(viewmodel.ImageUrl);
 
 				if (CheckValidUser(viewmodel, out var userId, out var view)
-					|| (userId == 0
-						&& view != null)) return view!;
+				    || (userId == 0
+				        && view != null)) return view!;
 
 				viewmodel.Code = string.Empty.NewUuidV7();
 				ProductEntity product = viewmodel;
@@ -168,8 +167,8 @@ public class ProductsController : MainController
 		try
 		{
 			if (CheckValidUser(viewmodel, out var userId, out var view)
-				|| (userId == 0
-					&& view != null)) return view!;
+			    || (userId == 0
+			        && view != null)) return view!;
 
 			var product = await _context.Products.FindAsync(code);
 
@@ -243,8 +242,8 @@ public class ProductsController : MainController
 			return ProductNotFound();
 
 		if (CheckValidUser(product, out var userId, out var view)
-			|| userId == 0
-			|| view != null) return view!;
+		    || userId == 0
+		    || view != null) return view!;
 
 		if (!await UserOwnsProductAsync(product.Code, userId))
 		{

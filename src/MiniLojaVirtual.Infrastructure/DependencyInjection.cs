@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,6 +22,7 @@ public static class DependencyInjection
 				options.Password.RequiredLength = DomainConstants.PasswordRequiredLength;
 				options.Lockout.MaxFailedAccessAttempts = DomainConstants.LockoutMaxFailedAccessAttempts;
 			})
+			.AddApiEndpoints()
 			.AddEntityFrameworkStores<ApplicationDbContext>();
 	}
 }

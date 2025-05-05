@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 using MiniLojaVirtual.Infrastructure.Contexts;
 using MiniLojaVirtual.Infrastructure.Entities.Products;
-using MiniLojaVirtual.Web.Controllers.Abstracts;
+using MiniLojaVirtual.Web.Controllers.Base;
 
 namespace MiniLojaVirtual.Web.Controllers;
 

@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MiniLojaVirtual.Domain\MiniLojaVirtual.Domain.csproj" />
     <ProjectReference Include="..\MiniLojaVirtual.Infrastructure\MiniLojaVirtual.Infrastructure.csproj" />
   </ItemGroup>

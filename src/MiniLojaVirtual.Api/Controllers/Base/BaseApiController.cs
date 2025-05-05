@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-using MiniLojaVirtual.Domain.Extensions;
-
 using System.Security.Claims;
 
-namespace MiniLojaVirtual.Web.Controllers.Abstracts;
+namespace MiniLojaVirtual.Api.Controllers.Base;
 
-public class MainController : Controller
+[ApiController]
+[Route("api/[controller]")]
+public abstract class BaseApiController : ControllerBase
 {
-	protected readonly ILogger<MainController> Logger;
+	protected readonly ILogger<BaseApiController> Logger;
 
-	protected MainController(ILogger<MainController> logger)
+	protected BaseApiController(ILogger<BaseApiController> logger)
 	{
 		Logger = logger;
 	}
@@ -20,7 +20,7 @@ public class MainController : Controller
 		return User.FindFirstValue(ClaimTypes.NameIdentifier);
 	}
 
-	protected async Task<string> SaveImage(string? imageData)
+	protected async Task<string?> SaveImage(string? imageData)
 	{
 		if (string.IsNullOrEmpty(imageData) ||
 			(Uri.IsWellFormedUriString(imageData, UriKind.Absolute) && !imageData.StartsWith("data:")))
@@ -50,9 +50,7 @@ public class MainController : Controller
 		}
 		catch (Exception ex)
 		{
-			const string errorMessage = "Erro ao salvar imagem.";
-			TempData["Error"] = errorMessage;
-			Logger.LogError($"{errorMessage}: {ex.Message}");
+			Logger.LogError($"Erro ao salvar imagem: {ex.Message}");
 		}
 
 		return imageData;
@@ -68,7 +66,7 @@ public class MainController : Controller
 		else if (header.Contains("image/jpeg") || header.Contains("image/jpg"))
 			extension = ".jpg";
 
-		var fileName = $"{string.Empty.NewUuidV7()}{extension}";
+		var fileName = $"{Guid.NewGuid()}{extension}";
 		return fileName;
 	}
 }
