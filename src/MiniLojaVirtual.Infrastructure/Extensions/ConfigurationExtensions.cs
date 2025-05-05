@@ -33,5 +33,7 @@ public static class ConfigurationExtensions
 		_ = builder.Property(x => x.IsDeleted)
 			.HasColumnType(DomainConstants.DefaultBooleanColumnTypeName)
 			.HasDefaultValue(false);
+
+		_ = builder.HasQueryFilter(x => !x.IsDeleted);
 	}
 }

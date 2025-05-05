@@ -1,42 +1,17 @@
 using MiniLojaVirtual.Infrastructure;
 using MiniLojaVirtual.Service.EmailSender;
+using MiniLojaVirtual.Web.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews();
-builder.Services.AddAuthentication();
-
-if (builder.Environment.IsDevelopment())
-{
-	builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-	builder.Configuration.AddUserSecrets<Program>();
-}
-
+builder.Services.AddWebAppConfigurations(
+	builder.Configuration,
+	builder.Environment.IsDevelopment());
 builder.Services.AddEmailService(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-	app.UseMigrationsEndPoint();
-}
-else
-{
-	app.UseExceptionHandler("/Home/Error");
-	app.UseHsts();
-}
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthorization();
-
-app.MapControllerRoute(
-	"default",
-	"{controller=Home}/{action=Index}/{id?}");
-app.MapRazorPages();
+app.UseWebApp();
 
 app.Run();

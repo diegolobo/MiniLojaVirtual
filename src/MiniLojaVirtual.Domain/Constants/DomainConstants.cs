@@ -2,6 +2,12 @@
 
 public static class DomainConstants
 {
+	#region Web
+
+	public const string DefaultCultureName = "pt-BR";
+
+	#endregion
+
 	#region Infrastructure
 
 	public const string DefaultConnectionStringName = "DefaultConnection";
