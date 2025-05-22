@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Localization;
 
+using MiniLojaVirtual.Application.Mvc;
 using MiniLojaVirtual.Domain.Constants;
-using MiniLojaVirtual.Web.Mvc;
 
 using System.Globalization;
 

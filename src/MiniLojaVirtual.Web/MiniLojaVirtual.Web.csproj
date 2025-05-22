@@ -10,7 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.15" NoWarn="NU1605" />
+	  <PackageReference Include="Asp.Versioning.Mvc" Version="7.0.0" />
+	  <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="7.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.15" NoWarn="NU1605" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.15" NoWarn="NU1605" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.15" NoWarn="NU1605" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.11" NoWarn="NU1605" />
@@ -21,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MiniLojaVirtual.Application\MiniLojaVirtual.Application.csproj" />
     <ProjectReference Include="..\MiniLojaVirtual.Domain\MiniLojaVirtual.Domain.csproj" />
     <ProjectReference Include="..\MiniLojaVirtual.Infrastructure\MiniLojaVirtual.Infrastructure.csproj" />
     <ProjectReference Include="..\MiniLojaVirtual.Service.EmailSender\MiniLojaVirtual.Service.EmailSender.csproj" />

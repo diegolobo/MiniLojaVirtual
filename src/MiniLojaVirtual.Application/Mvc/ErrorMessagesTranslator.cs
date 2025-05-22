@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 
-namespace MiniLojaVirtual.Web.Mvc;
+namespace MiniLojaVirtual.Application.Mvc;
 
 public static class ErrorMessagesTranslator
 {

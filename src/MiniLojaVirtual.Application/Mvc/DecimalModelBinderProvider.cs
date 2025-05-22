@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace MiniLojaVirtual.Web.Mvc;
+namespace MiniLojaVirtual.Application.Mvc;
 
 public class DecimalModelBinderProvider : IModelBinderProvider
 {

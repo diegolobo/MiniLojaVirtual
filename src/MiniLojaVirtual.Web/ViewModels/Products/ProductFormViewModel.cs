@@ -1,8 +1,7 @@
 ﻿using MiniLojaVirtual.Infrastructure.Entities.Products;
-using MiniLojaVirtual.Web.Mvc.Validations;
-
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using MiniLojaVirtual.Application.Mvc.Validations;
 
 namespace MiniLojaVirtual.Web.ViewModels.Products;
 

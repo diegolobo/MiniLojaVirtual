@@ -23,6 +23,7 @@ public static class DependencyInjection
 				options.Lockout.MaxFailedAccessAttempts = DomainConstants.LockoutMaxFailedAccessAttempts;
 			})
 			.AddApiEndpoints()
+			.AddRoles<IdentityRole<long>>()
 			.AddEntityFrameworkStores<ApplicationDbContext>();
 	}
 }

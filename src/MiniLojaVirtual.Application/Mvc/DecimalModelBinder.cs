@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using System.Globalization;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-using System.Globalization;
-
-namespace MiniLojaVirtual.Web.Mvc;
+namespace MiniLojaVirtual.Application.Mvc;
 
 public class DecimalModelBinder : IModelBinder
 {

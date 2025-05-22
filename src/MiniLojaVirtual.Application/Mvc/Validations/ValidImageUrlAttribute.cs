@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
-namespace MiniLojaVirtual.Web.Mvc.Validations;
+namespace MiniLojaVirtual.Application.Mvc.Validations;
 
 public class ValidImageUrlAttribute : ValidationAttribute
 {
