@@ -1,4 +1,4 @@
-﻿using MiniLojaVirtual.Domain.Models.Users;
+﻿using MiniLojaVirtual.Domain.Models.Products;
 using MiniLojaVirtual.Infrastructure.Contexts;
 using NetArchTest.Rules;
 
@@ -50,7 +50,7 @@ public class ArchitectureTests
 	[Fact]
 	public void DomainDoesNotDependOnInfrastructure()
 	{
-		var result = Types.InAssembly(typeof(ApplicationUser).Assembly)
+		var result = Types.InAssembly(typeof(Product).Assembly)
 			.That()
 			.ResideInNamespace("MiniLojaVirtual.Domain")
 			.Should()
@@ -63,7 +63,7 @@ public class ArchitectureTests
 	[Fact]
 	public void DomainMustNotDependOnApplication()
 	{
-		var result = Types.InAssembly(typeof(ApplicationUser).Assembly)
+		var result = Types.InAssembly(typeof(Product).Assembly)
 			.That()
 			.ResideInNamespace("MiniLojaVirtual.Domain")
 			.Should()
@@ -76,7 +76,7 @@ public class ArchitectureTests
 	[Fact]
 	public void DomainMustNotDependOnWebApp()
 	{
-		var result = Types.InAssembly(typeof(ApplicationUser).Assembly)
+		var result = Types.InAssembly(typeof(Product).Assembly)
 			.That()
 			.ResideInNamespace("MiniLojaVirtual.Domain")
 			.Should()
@@ -90,7 +90,7 @@ public class ArchitectureTests
 	[Fact]
 	public void DomainMustNotDependOnApi()
 	{
-		var result = Types.InAssembly(typeof(ApplicationUser).Assembly)
+		var result = Types.InAssembly(typeof(Product).Assembly)
 			.That()
 			.ResideInNamespace("MiniLojaVirtual.Domain")
 			.Should()
@@ -104,7 +104,7 @@ public class ArchitectureTests
 	[Fact]
 	public void ApplicationMustDependOnDomain()
 	{
-		var result = Types.InAssembly(typeof(ApplicationUser).Assembly)
+		var result = Types.InAssembly(typeof(Product).Assembly)
 			.That()
 			.ResideInNamespace("MiniLojaVirtual.Application")
 			.Should()
@@ -117,7 +117,7 @@ public class ArchitectureTests
 	[Fact]
 	public void ApplicationMustNotDependOnInfrastructure()
 	{
-		var result = Types.InAssembly(typeof(ApplicationUser).Assembly)
+		var result = Types.InAssembly(typeof(Product).Assembly)
 			.That()
 			.ResideInNamespace("MiniLojaVirtual.Application")
 			.Should()
@@ -130,7 +130,7 @@ public class ArchitectureTests
 	[Fact]
 	public void ApplicationMustNotDependOnWebApp()
 	{
-		var result = Types.InAssembly(typeof(ApplicationUser).Assembly)
+		var result = Types.InAssembly(typeof(Product).Assembly)
 			.That()
 			.ResideInNamespace("MiniLojaVirtual.Application")
 			.Should()
@@ -144,7 +144,7 @@ public class ArchitectureTests
 	[Fact]
 	public void ApplicationMustNotDependOnApi()
 	{
-		var result = Types.InAssembly(typeof(ApplicationUser).Assembly)
+		var result = Types.InAssembly(typeof(Product).Assembly)
 			.That()
 			.ResideInNamespace("MiniLojaVirtual.Application")
 			.Should()

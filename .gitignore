@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /src/MiniLojaVirtual.Infrastructure/CriarNovaMigracao.ps1
 /src/MiniLojaVirtual.Web/wwwroot/uploads
+/.claude/settings.local.json

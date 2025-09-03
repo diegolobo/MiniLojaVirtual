@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Dis.Uuid;
+
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 using MiniLojaVirtual.Api.Controllers.Base;
 using MiniLojaVirtual.Api.Models.Categories;
-using MiniLojaVirtual.Domain.Extensions;
 using MiniLojaVirtual.Infrastructure.Contexts;
 using MiniLojaVirtual.Infrastructure.Entities.Products;
 
@@ -92,7 +93,7 @@ public class CategoriesController : BaseApiController
 
 			var category = new CategoryEntity
 			{
-				Code = string.Empty.NewUuidV7(),
+				Code = UuidV7.New(),
 				Name = categoryDto.Name,
 				Description = categoryDto.Description,
 				UserId = userId,

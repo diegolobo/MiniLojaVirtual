@@ -1,15 +1,13 @@
 ﻿#nullable disable
 
+using Dis.Uuid;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
-
-using MiniLojaVirtual.Domain.Extensions;
 using MiniLojaVirtual.Infrastructure.Entities;
-
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Encodings.Web;
@@ -126,15 +124,15 @@ public class RegisterModel : PageModel
 			{
 				Name = string.Empty,
 				CreatedAt = DateTime.UtcNow,
-				Code = string.Empty.NewUuidV7(),
+				Code = UuidV7.New(),
 				EmailConfirmed = true
 			};
 		}
 		catch
 		{
 			throw new InvalidOperationException($"Can't create an instance of '{nameof(UserEntity)}'. " +
-												$"Ensure that '{nameof(UserEntity)}' is not an abstract class and has a parameterless constructor, or alternatively " +
-												$"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
+			                                    $"Ensure that '{nameof(UserEntity)}' is not an abstract class and has a parameterless constructor, or alternatively " +
+			                                    $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
 		}
 	}
 

@@ -9,6 +9,7 @@ using MiniLojaVirtual.Api.Middlewares;
 using MiniLojaVirtual.Application.Mvc;
 using MiniLojaVirtual.Infrastructure;
 using MiniLojaVirtual.Infrastructure.Entities;
+using Microsoft.EntityFrameworkCore;
 
 using System.Globalization;
 using System.Text;
@@ -98,6 +99,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
+
+// Aplicar migrations e seed automaticamente
+using (var scope = app.Services.CreateScope())
+{
+	var context = scope.ServiceProvider.GetRequiredService<MiniLojaVirtual.Infrastructure.Contexts.ApplicationDbContext>();
+	context.Database.EnsureCreated();
+	context.Database.Migrate();
+	
+	// Executar seed de dados
+	await MiniLojaVirtual.Infrastructure.Data.SeedData.SeedAsync(app.Services);
+}
 
 app.UseSwagger();
 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Lojinha API v1"));

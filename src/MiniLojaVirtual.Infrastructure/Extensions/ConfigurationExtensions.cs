@@ -14,7 +14,7 @@ public static class ConfigurationExtensions
 		_ = builder.HasKey(x => x.Id);
 
 		_ = builder.Property(x => x.Id)
-			.UseIdentityColumn(1);
+			.UseIdentityColumn(1, 1);
 
 		_ = builder.Property(x => x.Code)
 			.HasColumnType(DomainConstants.CodeColumnTypeName)

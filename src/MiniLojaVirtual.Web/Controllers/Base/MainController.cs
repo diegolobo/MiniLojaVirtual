@@ -66,7 +66,7 @@ public class MainController : Controller
 		else if (header.Contains("image/jpeg") || header.Contains("image/jpg"))
 			extension = ".jpg";
 
-		var fileName = $"{string.Empty.NewUuidV7()}{extension}";
+		var fileName = $"{UuidV7.New()}{extension}";
 		return fileName;
 	}
 }

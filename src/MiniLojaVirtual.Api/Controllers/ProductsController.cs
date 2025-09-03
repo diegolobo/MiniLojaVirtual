@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Dis.Uuid;
+
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 using MiniLojaVirtual.Api.Controllers.Base;
 using MiniLojaVirtual.Api.Models.Products;
-using MiniLojaVirtual.Domain.Extensions;
 using MiniLojaVirtual.Infrastructure.Contexts;
 using MiniLojaVirtual.Infrastructure.Entities.Products;
 
@@ -99,7 +100,7 @@ public class ProductsController : BaseApiController
 
 			var product = new ProductEntity
 			{
-				Code = string.Empty.NewUuidV7(),
+				Code = UuidV7.New(),
 				Name = productDto.Name,
 				Description = productDto.Description,
 				Price = productDto.Price,
